@@ -2,26 +2,19 @@
 <html>
 <head>
     <title>Cue Point</title>
+    <link rel="stylesheet" type="text/css" href="/lib/ionic/css/ionic.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="cordova.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:35729"/>
 </head>
 
 <!-- TODO: Initialize our app -->
 <body ng-app="CueApp">
 
-    <div ng-controller="TopCtrl">
-
-        <!-- BE CAREFUL -->
-        <!-- BE CAREFUL -->
-        <!-- BE CAREFUL -->
-        <!-- Single quotes INSIDE double quotes! -->
-        <!-- <div ng-include="'partials/navbar.html'"></div> -->
-
         <div ng-view></div>
 
-
-    </div>
-
 <!-- Third Party Libs -->
+<script type="text/javascript" src="lib/ionic/js/ionic.bundle.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
