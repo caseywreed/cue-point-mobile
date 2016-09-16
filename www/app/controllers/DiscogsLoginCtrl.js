@@ -17,7 +17,7 @@ app.controller("DiscogsLoginCtrl", function ($scope, $location, AuthFactory, $wi
             console.log("data in checkForLogin", data)
             if (Object.keys(data).length !== 0) {
             AuthFactory.deleteTokensFromFirebase()
-            $window.location.href = `/#/main`
+            $window.location.href = `#/main`
             } else {
                 return $q.reject(data)
             }
