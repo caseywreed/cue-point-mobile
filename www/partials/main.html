@@ -1,0 +1,15 @@
+<div ng-init="mainMenuInit()">
+    <h1>The Main Menu!</h1>
+    Catalog Number: <input type="text" name="" ng-model="searchTerm">
+    <button ng-click="searchByCatNumber()">Search By Catalog Number</button>
+    <button ng-click="addRickAstley()">Add Rick Astley To Your Collection</button>
+    <a ng-href="#/bag">View My Bag</a>
+    <div ng-repeat="release in searchResultsArray">
+        <div class="release-card">
+            <div><img src="{{release.thumb}}"/></span></div>
+            <h6>{{release.title}}</h6>
+            <h6>{{release.year}}</h6>
+            <div><button ng-click="addReleaseToBag(release.resource_url, release.thumb)">Add This Release To Your Bag</button></div>
+        </div>
+    </div>
+</div>

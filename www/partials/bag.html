@@ -1,0 +1,14 @@
+<div ng-init="bagCtrlInit()">
+    <a ng-href="#/main">Back to Main Menu</a>
+    <h1>Your Bag</h1>
+    <button ng-click="pushBagToDiscogs()">Push Bag to Your Discogs Account</button>
+    <div ng-repeat="release in bagDisplay">
+        <div class="release-card">
+            <img src="{{release.thumb}}">
+            <h6>{{release.title}}</h6>
+            <h6>{{release.year}}</h6>
+            <h6>Lowest Selling Price: ${{release.lowest_price}}</h6>
+            <button ng-click="deleteReleaseFromBag(release)">Delete Release From Bag</button>
+        </div>
+    </div>
+</div>
