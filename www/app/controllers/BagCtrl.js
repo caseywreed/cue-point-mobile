@@ -29,7 +29,10 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
     }
 
     $scope.pushBagToDiscogs = () => {
-        DiscogsFactory.addReleaseByNumberPromiseAll($scope.bagDisplay, $scope.transferedUserTokens)
+        $scope.pushNewTripsToDiscogs()
+        .then( function () {
+            return DiscogsFactory.addReleaseByNumberPromiseAll($scope.bagDisplay, $scope.transferedUserTokens)
+        })
         .then(function () {
             $scope.bag = []
             DiscogsFactory.setBag($scope.bag)
@@ -60,7 +63,7 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
             "date": calDate,
             "purchasedItems": $scope.bagDisplay
         }
-        console.log("trip object", tripObj)
+        return DiscogsFactory.addTripToFirebase(tripObj)
     }
 
 })

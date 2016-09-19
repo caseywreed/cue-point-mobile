@@ -1,9 +1,15 @@
 "use strict";
 
-app.controller("TripCtrl", function ($scope) {
+app.controller("TripCtrl", function ($scope, DiscogsFactory) {
+
+    $scope.displayTrips = []
 
     $scope.tripCtrlInit = () => {
         console.log("TripCtrl running")
+        DiscogsFactory.getTripsFromFirebase()
+        .then(function (data) {
+            console.log(data)
+        })
     }
 
 })
