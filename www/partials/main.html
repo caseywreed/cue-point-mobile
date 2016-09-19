@@ -1,15 +1,21 @@
 <div ng-init="mainMenuInit()">
-    <h1>The Main Menu!</h1>
-    Catalog Number: <input type="text" name="" ng-model="searchTerm">
-    <button ng-click="searchByCatNumber()">Search By Catalog Number</button>
-    <button ng-click="addRickAstley()">Add Rick Astley To Your Collection</button>
-    <a ng-href="#/bag">View My Bag</a>
-    <div ng-repeat="release in searchResultsArray">
-        <div class="release-card">
-            <div><img src="{{release.thumb}}"/></span></div>
-            <h6>{{release.title}}</h6>
-            <h6>{{release.year}}</h6>
-            <div><button ng-click="addReleaseToBag(release.resource_url, release.thumb)">Add This Release To Your Bag</button></div>
+    <div class="list padding">
+        <h1>Main Menu</h1>
+        <input class="padding" type="text" name="" ng-model="searchTerm" placeholder="Catalog Number">
+        <button class="button button-positive button-full" ng-click="searchByCatNumber()">Search By Catalog Number</button>
+        <a style="text-decoration: none;" ng-href="#/bag"><button class="button button-balanced button-full">View My Bag</button></a>
+    </div>
+    <!-- <button ng-click="addRickAstley()">Add Rick Astley To Your Collection</button> -->
+    <div class="list padding">
+        <div ng-repeat="release in searchResultsArray">
+            <div class="card">
+                <h4>{{release.title}}</h4>
+                <h5>{{release.label[0]}}</h5>
+                <div><img src="{{release.thumb}}"/></span></div>
+                <div><p>{{release.format[1]}} / {{release.format[0]}}</p></div>
+                <h4>{{release.year}}</h6>
+                <div><button class="button button-positive button-full" ng-click="addReleaseToBag(release.resource_url, release.thumb)">Add Release To Bag</button></div>
+            </div>
         </div>
     </div>
 </div>

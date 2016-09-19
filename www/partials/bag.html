@@ -1,14 +1,24 @@
 <div ng-init="bagCtrlInit()">
-    <a ng-href="#/main">Back to Main Menu</a>
-    <h1>Your Bag</h1>
-    <button ng-click="pushBagToDiscogs()">Push Bag to Your Discogs Account</button>
-    <div ng-repeat="release in bagDisplay">
-        <div class="release-card">
-            <img src="{{release.thumb}}">
-            <h6>{{release.title}}</h6>
-            <h6>{{release.year}}</h6>
-            <h6>Lowest Selling Price: ${{release.lowest_price}}</h6>
-            <button ng-click="deleteReleaseFromBag(release)">Delete Release From Bag</button>
+    <!-- <a ng-href="#/main">Back to Main Menu</a> -->
+    <div class="list padding">
+        <h1>Your Bag</h1>
+        <a style="text-decoration: none;" ng-href="#/main"><button class="button button-balanced button-full">Back to Main Menu</button></a>
+        <button class="button button-full button-positive" ng-click="pushBagToDiscogs()">Push Bag to Your Discogs Account</button>
+    </div>
+    <div class="list padding">
+        <div ng-repeat="release in bagDisplay">
+            <div class="card">
+                <h4>{{release.artists[0].name}}</h4>
+                <h3>{{release.title}}</h3>
+                <h5>{{release.label[0]}}</h5>
+                <div><img src="{{release.thumb}}"/></span></div>
+                <p>{{release.formats[0].descriptions[0]}} {{release.formats[0].descriptions[1]}} {{release.formats[0].descriptions[2]}}</p>
+                <h6>{{release.year}}</h6>
+                <p>Lowest Selling Price: ${{release.lowest_price}}</p>
+                <p>Have: {{release.community.have}} Want: {{release.community.want}}</p>
+                <button class="button button-full button-assertive" ng-click="deleteReleaseFromBag(release)">Delete Release From Bag</button>
+            </div>
         </div>
     </div>
 </div>
+
