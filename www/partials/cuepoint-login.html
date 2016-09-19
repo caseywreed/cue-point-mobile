@@ -1,6 +1,6 @@
 <section ng-init="cueLoginInit()">
+    <div class="list padding">
     <h1>Login or Register</h1>
-    <div class="list">
         <label class="item item-input item-floating-label">
         <span class="input-label">Email</span>
             <input type="text" placeholder="Email" ng-model="account.email">
@@ -9,7 +9,7 @@
         <span class="input-label">Password</span>
             <input type="password" placeholder="Password" ng-model="account.password">
         </label>
-        <button class="danger" ng-click="login()">Login</button>
-        <button ng-click="register()">Register</button>
+        <button class="button button-positive" ng-click="login()">Login</button>
+        <button class="button button-balanced" ng-click="register()">Register</button>
     </div>
 </section>
