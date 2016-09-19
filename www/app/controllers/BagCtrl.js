@@ -28,12 +28,6 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         console.log("$scope.bagDisplay", $scope.bagDisplay)
     }
 
-    // $scope.pushBagToDiscogs = () => {
-    //     $scope.bagDisplay.forEach(function (release) {
-    //         DiscogsFactory.addReleaseByNumber(release.id, $scope.transferedUserTokens)
-    //     })
-    // }
-
     $scope.pushBagToDiscogs = () => {
         DiscogsFactory.addReleaseByNumberPromiseAll($scope.bagDisplay, $scope.transferedUserTokens)
         .then(function () {
@@ -56,6 +50,17 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         })
         console.log("$scope.bag in BagCtrl", $scope.bag)
         DiscogsFactory.setBag($scope.bag)
+    }
+
+    $scope.pushNewTripsToDiscogs = () => {
+        let calDate = new Date()
+        let tripObj = {
+            "uid": AuthFactory.getUid(),
+            "timestamp": Date.now(),
+            "date": calDate,
+            "purchasedItems": $scope.bagDisplay
+        }
+        console.log("trip object", tripObj)
     }
 
 })

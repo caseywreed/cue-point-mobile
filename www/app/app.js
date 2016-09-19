@@ -24,6 +24,10 @@ app.config(function ($routeProvider) {
             templateUrl: "partials/bag.html",
             controller: "BagCtrl"
         }).
+        when("/trips", {
+            templateUrl: "partials/trips.html",
+            controller: "TripCtrl"
+        }).
         otherwise('/')
 })
 

@@ -67,6 +67,19 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, setBag, getBag}
+    let addTripToFirebase = (tripObj) => {
+        let timestamp = Date.now()
+        return $q((resolve,reject) => {
+            $http.post('https://cue-point.firebaseio.com/trips.json')
+            .then((data) => {
+                resolve(data)
+            }),(error) => {
+                console.error(error)
+                reject(error)
+            }
+        })
+    }
+
+    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, setBag, getBag}
 
 })
