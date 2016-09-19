@@ -57,12 +57,16 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
 
     $scope.pushNewTripsToDiscogs = () => {
         let calDate = new Date()
+        let timestamp = Date.now()
+        let tripId = AuthFactory.getUid() + timestamp
         let tripObj = {
             "uid": AuthFactory.getUid(),
-            "timestamp": Date.now(),
-            "date": calDate,
+            "tripId": tripId,
+            "timestamp": timestamp,
+            "date": calDate.toString(),
             "purchasedItems": $scope.bagDisplay
         }
+        console.log("trip object", tripObj)
         return DiscogsFactory.addTripToFirebase(tripObj)
     }
 

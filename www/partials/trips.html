@@ -1,4 +1,16 @@
 <section ng-init="tripCtrlInit()">
-    <h1>The Trips View!</h1>
+    <div class="list padding">
+    <h1>Trips</h1>
+        <div ng-repeat="trip in displayTrips">
+            <div class="card">
+                <div class="list padding">
+                    <h4>{{trip.date.toDateString()}}</h4>
+                    <h4>Items Purchased: {{trip.purchasedItems.length}}</h4>
+                    <button class="button button-positive" ng-click="viewTripDetails(trip)">View Trip Details</button>
+                    <button class="button button-assertive" ng-click="deleteTripFromFirebase(trip.tripId)">Delete This Trip</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
