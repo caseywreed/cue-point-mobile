@@ -72,6 +72,7 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         .scan()
         .then(function(barcodeData) {
             console.log(barcodeData)
+            // SEND BARCODE DATA TO DiscogsFactory.searchDiscogsByBarcode or whatever
         // Success! Barcode data is here
         }, function(error) {
         // An error occurred
