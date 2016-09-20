@@ -15,6 +15,9 @@ app.controller("TripCtrl", function ($scope, DiscogsFactory) {
 
     $scope.deleteTripFromFirebase = (tripDeleteId) => {
         DiscogsFactory.deleteTripFromFirebaseByTripDeleteId(tripDeleteId)
+        .then(function () {
+            $scope.tripCtrlInit()
+        })
     }
 
     $scope.setDeleteKeys = () => {
