@@ -67,7 +67,7 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    let searchByUpc = (upcNumber, userAuthToken) => {
+    let searchByUpcNumber = (upcNumber, userAuthToken) => {
         let timestamp = Date.now()
         return $q((resolve,reject) => {
             $http.get(`https://api.discogs.com/database/search?barcode=${upcNumber}&per_page=25&page=1&oauth_consumer_key=RLNRPrabhetprjFlZgUt&oauth_token=${userAuthToken.oauth_token}&oauth_signature_method=PLAINTEXT&oauth_timestamp=${timestamp}&oauth_nonce=yqg53e&oauth_version=1.0&oauth_signature=kuwUTbYZgyBKdsqfpdIRTfvxIFwAWbMw%26${userAuthToken.oauth_token_secret}`)
@@ -132,6 +132,6 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, getTripsFromFirebase, getTripFromFirebaseByTripId, deleteTripFromFirebaseByTripDeleteId, setBag, getBag}
+    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, searchByUpcNumber, addTripToFirebase, getTripsFromFirebase, getTripFromFirebaseByTripId, deleteTripFromFirebaseByTripDeleteId, setBag, getBag}
 
 })
