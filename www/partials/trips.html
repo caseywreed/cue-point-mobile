@@ -1,0 +1,19 @@
+<section ng-init="tripCtrlInit()">
+    <div class="list padding">
+    <h1>Trips</h1>
+    <a style="text-decoration: none;" ng-href="#/main"><button class="button button-positive button-full">Back to Main Menu</button></a>
+        <div ng-repeat="trip in displayTrips">
+            <div class="card">
+                <div class="list padding">
+                    <h4>{{trip.date}}</h4>
+                    <h4>Items Purchased: {{trip.purchasedItems.length}}</h4>
+                    <div ng-repeat="itemImages in trip.purchasedItems">
+                        <img src="{{itemImages.thumb}}">
+                    </div>
+                    <a style="text-decoration: none;" ng-href="#/trips/{{trip.tripId}}"><button class="button button-positive">View Trip Details</button></a>
+                    <button class="button button-assertive" ng-click="deleteTripFromFirebase(trip.tripDeleteId)">Delete This Trip</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

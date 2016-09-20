@@ -28,14 +28,11 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         console.log("$scope.bagDisplay", $scope.bagDisplay)
     }
 
-    // $scope.pushBagToDiscogs = () => {
-    //     $scope.bagDisplay.forEach(function (release) {
-    //         DiscogsFactory.addReleaseByNumber(release.id, $scope.transferedUserTokens)
-    //     })
-    // }
-
     $scope.pushBagToDiscogs = () => {
-        DiscogsFactory.addReleaseByNumberPromiseAll($scope.bagDisplay, $scope.transferedUserTokens)
+        $scope.pushNewTripsToDiscogs()
+        .then( function () {
+            return DiscogsFactory.addReleaseByNumberPromiseAll($scope.bagDisplay, $scope.transferedUserTokens)
+        })
         .then(function () {
             $scope.bag = []
             DiscogsFactory.setBag($scope.bag)
@@ -56,6 +53,21 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         })
         console.log("$scope.bag in BagCtrl", $scope.bag)
         DiscogsFactory.setBag($scope.bag)
+    }
+
+    $scope.pushNewTripsToDiscogs = () => {
+        let calDate = new Date()
+        let timestamp = Date.now()
+        let tripId = AuthFactory.getUid() + timestamp
+        let tripObj = {
+            "uid": AuthFactory.getUid(),
+            "tripId": tripId,
+            "timestamp": timestamp,
+            "date": calDate.toString(),
+            "purchasedItems": $scope.bagDisplay
+        }
+        console.log("trip object", tripObj)
+        return DiscogsFactory.addTripToFirebase(tripObj)
     }
 
 })

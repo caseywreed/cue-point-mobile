@@ -67,6 +67,56 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, setBag, getBag}
+    let addTripToFirebase = (tripObj) => {
+        // console.log("trip object in addTripToFierbase", tripObj)
+        return $q((resolve,reject) => {
+            $http.post('https://cue-point.firebaseio.com/trips.json', angular.toJson(tripObj))
+            .then((data) => {
+                resolve(data)
+            }),(error) => {
+                console.error(error)
+                reject(error)
+            }
+        })
+    }
+
+    let getTripsFromFirebase = () => {
+        let _uid = AuthFactory.getUid()
+        return $q((resolve,reject) => {
+            $http.get(`https://cue-point.firebaseio.com/trips.json?orderBy="uid"&equalTo="${_uid}"`)
+            .then((data) => {
+                resolve(data)
+            }),(error) => {
+                console.error(error)
+                reject(error)
+            }
+        })
+    }
+
+    let getTripFromFirebaseByTripId = (tripId) => {
+        return $q((resolve,reject) => {
+            $http.get(`https://cue-point.firebaseio.com/trips.json?orderBy="tripId"&equalTo="${tripId}"`)
+            .then((data) => {
+                resolve(data)
+            }),(error) => {
+                console.error(error)
+                reject(error)
+            }
+        })
+    }
+
+    let deleteTripFromFirebaseByTripDeleteId = (tripDeleteId) => {
+        return $q((resolve,reject) => {
+            $http.delete(`https://cue-point.firebaseio.com/trips/${tripDeleteId}.json`)
+            .then((data) => {
+                resolve(data)
+            }),(error) => {
+                console.error(error)
+                reject(error)
+            }
+        })
+    }
+
+    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, getTripsFromFirebase, getTripFromFirebaseByTripId, deleteTripFromFirebaseByTripDeleteId, setBag, getBag}
 
 })

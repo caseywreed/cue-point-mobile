@@ -42,6 +42,7 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory) {
     $scope.searchByCatNumber = () => {
         DiscogsFactory.searchByCatNumber($scope.searchTerm, $scope.userAuthToken)
         .then(function (searchResults) {
+            // PLACE BLANK IMAGE CHECKER IN HERE
             $scope.searchResultsArray = searchResults.results
             console.log("searchResultsArray", $scope.searchResultsArray)
         })
