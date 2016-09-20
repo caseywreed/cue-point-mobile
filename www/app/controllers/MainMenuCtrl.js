@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $cordovaBarcodeScanner) {
+app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $cordovaBarcodeScanner, $cordovaToast) {
 
     $scope.userAuthToken = {}
     $scope.searchTerm = ""
@@ -64,6 +64,11 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         $scope.bag.push(releaseObj)
         console.log("bag", $scope.bag)
         DiscogsFactory.setBag($scope.bag)
+        $cordovaToast.showShortCenter('Release added to bag').then(function(success) {
+        // success
+        }, function (error) {
+        // error
+        });
     }
 
     $scope.scanBarcode = () => {
