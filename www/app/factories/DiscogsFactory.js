@@ -105,9 +105,9 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    let deleteTripFromFirebaseByTripId = (tripId) => {
+    let deleteTripFromFirebaseByTripDeleteId = (tripDeleteId) => {
         return $q((resolve,reject) => {
-            $http.delete(`https://cue-point.firebaseio.com/trips.json?orderBy="tripId"&equalTo="${tripId}"`)
+            $http.delete(`https://cue-point.firebaseio.com/trips/${tripDeleteId}.json`)
             .then((data) => {
                 resolve(data)
             }),(error) => {
@@ -117,6 +117,6 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, getTripsFromFirebase, getTripFromFirebaseByTripId, setBag, getBag}
+    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, getTripsFromFirebase, getTripFromFirebaseByTripId, deleteTripFromFirebaseByTripDeleteId, setBag, getBag}
 
 })

@@ -8,13 +8,22 @@ app.controller("TripCtrl", function ($scope, DiscogsFactory) {
         console.log("TripCtrl running")
         DiscogsFactory.getTripsFromFirebase()
         .then(function (data) {
-            console.log(data)
             $scope.displayTrips = data.data
+            $scope.setDeleteKeys()
         })
     }
 
-    $scope.deleteTripFromFirebase = (tripId) => {
+    $scope.deleteTripFromFirebase = (tripDeleteId) => {
+        DiscogsFactory.deleteTripFromFirebaseByTripDeleteId(tripDeleteId)
+    }
 
+    $scope.setDeleteKeys = () => {
+        console.log("$scope.displayTrips", $scope.displayTrips)
+        for (let trip in $scope.displayTrips) {
+            // let key = Object.keys(trip)[0]
+            $scope.displayTrips[trip].tripDeleteId = trip
+        }
+        console.log("$scope.displayTrips", $scope.displayTrips)
     }
 
 })
