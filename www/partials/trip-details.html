@@ -6,8 +6,8 @@
             <h3>{{trip.date}}</h3>
                 <div ng-repeat="release in trip.purchasedItems">
                     <div class="card">
-                        <h4>{{release.artists[0].name}}</h4>
-                        <h3>{{release.title}}</h3>
+                        <h3>{{release.artists[0].name}}</h3>
+                        <h4>{{release.title}}</h4>
                         <h5>{{release.label[0]}}</h5>
                         <div><img src="{{release.thumb}}"/></span></div>
                         <p>{{release.formats[0].descriptions[0]}} {{release.formats[0].descriptions[1]}} {{release.formats[0].descriptions[2]}}</p>
