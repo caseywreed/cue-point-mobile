@@ -54,6 +54,21 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         })
     }
 
+    $scope.searchByUpcNumber = (upcNumber) => {
+        DiscogsFactory.searchByUpcNumber(upcNumber, $scope.userAuthToken)
+        .then(function (searchResults) {
+            // PLACE BLANK IMAGE CHECKER IN HERE
+            $scope.searchResultsArray = searchResults.results
+            $scope.searchResultsArray.forEach(function (release) {
+                if (release.thumb === "") {
+                    console.log("setting blank image")
+                    release.thumb = "img/vector-vinyl-record.jpg"
+                }
+            })
+            console.log("searchResultsArray", $scope.searchResultsArray)
+        })
+    }
+
     $scope.addReleaseToBag = (resource_url, thumb) => {
         console.log("resource_url", resource_url)
         console.log("thumb", thumb)
@@ -78,6 +93,7 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         .then(function(barcodeData) {
             console.log(barcodeData)
             // SEND BARCODE DATA TO DiscogsFactory.searchDiscogsByBarcode or whatever
+            $scope.searchByUpcNumber(barcodeData.text)
         // Success! Barcode data is here
         }, function(error) {
         // An error occurred
