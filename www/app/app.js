@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("CueApp", ["ngRoute", "ionic"])
+var app = angular.module("CueApp", ["ngRoute", "ionic", "ngCordova"])
 
 app.config(function ($routeProvider) {
     $routeProvider.
