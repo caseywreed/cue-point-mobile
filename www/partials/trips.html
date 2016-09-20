@@ -4,8 +4,11 @@
         <div ng-repeat="trip in displayTrips">
             <div class="card">
                 <div class="list padding">
-                    <h4>{{trip.date.toDateString()}}</h4>
+                    <h4>{{trip.date}}</h4>
                     <h4>Items Purchased: {{trip.purchasedItems.length}}</h4>
+                    <div ng-repeat="itemImages in trip.purchasedItems">
+                        <img src="{{itemImages.thumb}}">
+                    </div>
                     <button class="button button-positive" ng-click="viewTripDetails(trip)">View Trip Details</button>
                     <button class="button button-assertive" ng-click="deleteTripFromFirebase(trip.tripId)">Delete This Trip</button>
                 </div>

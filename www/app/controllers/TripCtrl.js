@@ -13,8 +13,4 @@ app.controller("TripCtrl", function ($scope, DiscogsFactory) {
         })
     }
 
-    $scope.checkDate = (trip) => {
-        console.log("trip formatted", trip.date.toDateString() )
-    }
-
 })
