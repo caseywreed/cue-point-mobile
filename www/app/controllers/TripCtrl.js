@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TripCtrl", function ($scope, DiscogsFactory) {
+app.controller("TripCtrl", function ($scope, DiscogsFactory, $cordovaToast) {
 
     $scope.displayTrips = []
 
@@ -17,6 +17,11 @@ app.controller("TripCtrl", function ($scope, DiscogsFactory) {
         DiscogsFactory.deleteTripFromFirebaseByTripDeleteId(tripDeleteId)
         .then(function () {
             $scope.tripCtrlInit()
+            $cordovaToast.showShortCenter('Trip deleted').then(function(success) {
+            // success
+            }, function (error) {
+            // error
+            });
         })
     }
 

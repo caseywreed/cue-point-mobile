@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory) {
+app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast) {
 
     $scope.bag = []
     $scope.bagDisplay = []
@@ -37,6 +37,11 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
             $scope.bag = []
             DiscogsFactory.setBag($scope.bag)
             $location.url("/main")
+            $cordovaToast.showShortCenter('Bag pushed to Discogs').then(function(success) {
+            // success
+            }, function (error) {
+            // error
+            });
         })
     }
 
