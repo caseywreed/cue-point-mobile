@@ -44,6 +44,12 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory) {
         .then(function (searchResults) {
             // PLACE BLANK IMAGE CHECKER IN HERE
             $scope.searchResultsArray = searchResults.results
+            $scope.searchResultsArray.forEach(function (release) {
+                if (release.thumb === "") {
+                    console.log("setting blank image")
+                    release.thumb = "img/vector-vinyl-record.jpg"
+                }
+            })
             console.log("searchResultsArray", $scope.searchResultsArray)
         })
     }
