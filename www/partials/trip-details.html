@@ -1,0 +1,21 @@
+<section ng-init="tripDetailInit()">
+    <div class="list padding">
+        <h1>Trip Details</h1>
+        <a style="text-decoration: none;" ng-href="#/trips"><button class="button button-positive button-full">Back to Trips</button></a>
+        <div ng-repeat="trip in tripDisplay">
+            <h3>{{trip.date}}</h3>
+                <div ng-repeat="release in trip.purchasedItems">
+                    <div class="card">
+                        <h4>{{release.artists[0].name}}</h4>
+                        <h3>{{release.title}}</h3>
+                        <h5>{{release.label[0]}}</h5>
+                        <div><img src="{{release.thumb}}"/></span></div>
+                        <p>{{release.formats[0].descriptions[0]}} {{release.formats[0].descriptions[1]}} {{release.formats[0].descriptions[2]}}</p>
+                        <h6>{{release.year}}</h6>
+                        <p>Lowest Selling Price: ${{release.lowest_price}}</p>
+                        <p>Have: {{release.community.have}} Want: {{release.community.want}}</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>

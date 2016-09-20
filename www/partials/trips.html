@@ -9,7 +9,8 @@
                     <div ng-repeat="itemImages in trip.purchasedItems">
                         <img src="{{itemImages.thumb}}">
                     </div>
-                    <button class="button button-positive" ng-click="viewTripDetails(trip)">View Trip Details</button>
+                    <!-- <button class="button button-positive" ng-click="viewTripDetails(trip.tripId)">View Trip Details</button> -->
+                    <a style="text-decoration: none;" ng-href="#/trips/{{trip.tripId}}"><button class="button button-positive">View Trip Details</button></a>
                     <button class="button button-assertive" ng-click="deleteTripFromFirebase(trip.tripId)">Delete This Trip</button>
                 </div>
             </div>

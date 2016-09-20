@@ -28,6 +28,10 @@ app.config(function ($routeProvider) {
             templateUrl: "partials/trips.html",
             controller: "TripCtrl"
         }).
+        when("/trips/:tripId", {
+            templateUrl: "partials/trip-details.html",
+            controller: "TripDetailCtrl"
+        }).
         otherwise('/')
 })
 

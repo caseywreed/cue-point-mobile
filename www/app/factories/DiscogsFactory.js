@@ -93,6 +93,18 @@ app.factory("DiscogsFactory", function ($q, $http, AuthFactory) {
         })
     }
 
-    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, getTripsFromFirebase, setBag, getBag}
+    let getTripFromFirebaseByTripId = (tripId) => {
+        return $q((resolve,reject) => {
+            $http.get(`https://cue-point.firebaseio.com/trips.json?orderBy="tripId"&equalTo="${tripId}"`)
+            .then((data) => {
+                resolve(data)
+            }),(error) => {
+                console.error(error)
+                reject(error)
+            }
+        })
+    }
+
+    return {addReleaseByNumber, addReleaseByNumberPromiseAll, searchByReleaseUrl, searchByCatNumber, addTripToFirebase, getTripsFromFirebase, getTripFromFirebaseByTripId, setBag, getBag}
 
 })

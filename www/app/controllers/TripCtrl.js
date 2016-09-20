@@ -13,4 +13,8 @@ app.controller("TripCtrl", function ($scope, DiscogsFactory) {
         })
     }
 
+    $scope.viewTripDetails = (tripId) => {
+
+    }
+
 })
