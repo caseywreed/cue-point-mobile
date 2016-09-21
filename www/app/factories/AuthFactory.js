@@ -83,7 +83,7 @@ app.factory("AuthFactory", function ($q, $http, DiscogsCreds, $window, $location
                 + timestamp +
                 "&oauth_nonce=33u0UT&oauth_version=1.0&oauth_signature="
                 + DiscogsCreds.oauth_signature +
-                "%26&oauth_callback=http://localhost:8080/#/redirect", //This is the ampersand at the end of the secret!
+                "%26&oauth_callback=http://localhost:8100/#", //This is the ampersand at the end of the secret!
             })
             .success((data) => {
                 console.log(data)
