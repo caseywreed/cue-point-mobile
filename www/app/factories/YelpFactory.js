@@ -29,7 +29,6 @@ app.factory("YelpFactory", function ($q, $http, $cordovaGeolocation) {
 
     let searchYelpWithCoords = (lat, long) => {
         console.log("Searching yelp with Coords")
-        getCoordsFromPhone()
         console.log("user coords", lat, long)
         return $q((resolve,reject) => {
             $http.get(`https://api.yelp.com/v3/businesses/search?categories=vinyl_records&latitude=${lat}&longitude=${long}&radius=25`,
