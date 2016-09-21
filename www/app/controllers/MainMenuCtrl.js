@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $cordovaBarcodeScanner, $cordovaToast, $ionicTabsDelegate) {
+app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $cordovaBarcodeScanner, $cordovaToast, $ionicTabsDelegate, YelpFactory) {
 
     $scope.userAuthToken = {}
     $scope.searchTerm = ""
@@ -13,6 +13,7 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         $scope.getUserAccessTokens()
         $scope.bag = DiscogsFactory.getBag()
         console.log("mainMenuInit bag", $scope.bag)
+        YelpFactory.searchYelpWithCoords()
     }
 
     $scope.getUserAccessTokens = () => {
