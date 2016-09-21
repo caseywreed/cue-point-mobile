@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("AuthFactory", function ($q, $http, DiscogsCreds, $window, $location) {
+app.factory("AuthFactory", function ($q, $http, DiscogsCreds, $window, $location, $cordovaInAppBrowser) {
 
     let _uid = null
     let _userName = null
@@ -63,6 +63,14 @@ app.factory("AuthFactory", function ($q, $http, DiscogsCreds, $window, $location
         })
     }
 
+
+    // Setting options for ngCordova's inAppBrowser
+    let options = {
+        location: 'no',
+        clearcache: 'no',
+        toolbar: 'no'
+    }
+
     let discogsAuthCall = () => {
         console.log("discogsAuthCall running")
         let timestamp = Date.now()
@@ -80,7 +88,8 @@ app.factory("AuthFactory", function ($q, $http, DiscogsCreds, $window, $location
             .success((data) => {
                 console.log(data)
                 setInitialUserTokens(data)
-                $window.location.href = `https://discogs.com/oauth/authorize?oauth_token=${userTokens.oauth_token}`;
+                // $window.location.href = `https://discogs.com/oauth/authorize?oauth_token=${userTokens.oauth_token}`
+                $cordovaInAppBrowser.open(`https://discogs.com/oauth/authorize?oauth_token=${userTokens.oauth_token}`, '_blank', options)
                 resolve(data)
             })
             .error((error) => {
