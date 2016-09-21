@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast) {
+app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast, YelpFactory) {
 
     $scope.bag = []
     $scope.bagDisplay = []
@@ -10,6 +10,7 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         $scope.getBagFromDiscogsFactory()
         $scope.loadBagToBagDisplay()
         $scope.transferedUserTokens = AuthFactory.getTransferableUserTokens()
+        YelpFactory.
     }
 
     $scope.getBagFromDiscogsFactory = () => {
