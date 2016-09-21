@@ -37,6 +37,6 @@ app.factory("YelpFactory", function ($q, $http, $cordovaGeolocation) {
         })
     }
 
-    return {searchYelpWithCoords}
+    return {searchYelpWithCoords, getCoordsFromPhone}
 
 })
