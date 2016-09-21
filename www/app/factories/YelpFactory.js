@@ -19,13 +19,13 @@ app.factory("YelpFactory", function ($q, $http, $cordovaGeolocation) {
             lat  = position.coords.latitude
             long = position.coords.longitude
             searchYelpWithCoords(lat, long)
-            .then(function (data) => {
+            .then(function (data) {
                 console.log("data from yelp", data)
             })
         }, function(err) {
             console.log(err)
         })
-        }
+    }
 
     let searchYelpWithCoords = (lat, long) => {
         console.log("Searching yelp with Coords")

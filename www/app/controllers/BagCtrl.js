@@ -10,7 +10,7 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         $scope.getBagFromDiscogsFactory()
         $scope.loadBagToBagDisplay()
         $scope.transferedUserTokens = AuthFactory.getTransferableUserTokens()
-        YelpFactory.
+        YelpFactory.getCoordsFromPhone()
     }
 
     $scope.getBagFromDiscogsFactory = () => {
