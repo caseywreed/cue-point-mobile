@@ -14,7 +14,6 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         $scope.bag = DiscogsFactory.getBag()
         console.log("mainMenuInit bag", $scope.bag)
         YelpFactory.searchYelpWithCoords()
-        YelpFactory.getCoordsFromPhone()
     }
 
     $scope.getUserAccessTokens = () => {
