@@ -1,11 +1,13 @@
 <div ng-init="mainMenuInit()">
     <div class="list padding">
         <h1>Main Menu</h1>
-        <input class="padding" type="text" name="" ng-model="searchTerm" placeholder="Catalog Number">
-        <button class="button button-positive button-full" ng-click="searchByCatNumber()">Search By Catalog Number</button>
-        <button class="button button-positive button-full" ng-click="scanBarcode()">Scan a Barcode</button>
-        <a style="text-decoration: none;" ng-href="#/bag"><button class="button button-balanced button-full">View My Bag</button></a>
-        <a style="text-decoration: none;" ng-href="#/trips"><button class="button button-calm button-full">View Previous Trips</button></a>
+        <input class="padding border" type="text" name="" ng-model="searchTerm" placeholder="Catalog Number">
+        <div class="button-bar">
+            <button class="button button-positive" ng-click="searchByCatNumber()">Search Catalog #</button>
+            <button class="button button-dark" ng-click="scanBarcode()">Scan a Barcode</button>
+        </div>
+        <!-- <a style="text-decoration: none;" ng-href="#/bag"><button class="button button-balanced button-full">View My Bag</button></a> -->
+        <!-- <a style="text-decoration: none;" ng-href="#/trips"><button class="button button-calm button-full">View Previous Trips</button></a> -->
     </div>
     <!-- <button ng-click="addRickAstley()">Add Rick Astley To Your Collection</button> -->
     <div class="list padding">

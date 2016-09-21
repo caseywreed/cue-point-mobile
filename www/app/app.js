@@ -2,7 +2,10 @@
 
 var app = angular.module("CueApp", ["ngRoute", "ionic", "ngCordova"])
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position("bottom");
+
     $routeProvider.
         when("/", {
             templateUrl: "partials/cuepoint-login.html",

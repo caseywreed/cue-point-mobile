@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("CueLoginCtrl", function ($scope, $window, $location, AuthFactory) {
+app.controller("CueLoginCtrl", function ($scope, $window, $location, AuthFactory, $ionicTabsDelegate) {
 
     $scope.account = {
         email: "",
@@ -12,6 +12,7 @@ app.controller("CueLoginCtrl", function ($scope, $window, $location, AuthFactory
     let oauthToken = null
 
     $scope.cueLoginInit = () => {
+        $ionicTabsDelegate.showBar(false)
         if ($location.$$absUrl.length > 40) {
             $scope.checkForAuthToken()
         } else {

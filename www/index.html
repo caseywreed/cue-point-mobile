@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/ionic.app.css">
     <link rel="stylesheet" type="text/css" href="lib/ionic/css/ionic.css">
     <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script> <!--- THIS MUST BE LAST! -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -19,10 +20,10 @@
       <ion-nav-title>
         <h1 class="title">Cue Point</h1>
       </ion-nav-title>
-      <ion-nav-buttons side="left">
+      <!-- <ion-nav-buttons side="left"> -->
       <!-- Toggle left side menu -->
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      </ion-nav-buttons>
+        <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+      <!-- </ion-nav-buttons> -->
     </ion-nav-bar>
 
     <!-- Center content -->
@@ -35,13 +36,24 @@
       </ion-content>
     </ion-side-menu-content>
 
-    <!-- Left menu -->
-    <ion-side-menu side="left">
-
-    </ion-side-menu>
 
   </ion-side-menus>
 
+  <ion-tabs class="tabs-dark tabs-icon-top">
+
+  <ion-tab title="Home" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/main">
+
+  </ion-tab>
+
+  <ion-tab title="Bag" icon-on="ion-bag" icon-off="ion-bag" href="#/bag">
+
+  </ion-tab>
+
+  <ion-tab title="Trips" icon-on="ion-ios-pricetags" icon-off="ion-ios-pricetags-outline" href="#/trips">
+
+  </ion-tab>
+
+  </ion-tabs>
 
 
   <!-- This is all Tim has for Snappy -->
@@ -54,7 +66,6 @@
     </ion-nav-view> -->
 
 <!-- Third Party Libs -->
-<script type="text/javascript" src="lib/ionic/js/ionic.bundle.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script>

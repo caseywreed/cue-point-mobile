@@ -9,7 +9,9 @@
         <span class="input-label">Password</span>
             <input type="password" placeholder="Password" ng-model="account.password">
         </label>
-        <button class="button button-positive" ng-click="login()">Login</button>
-        <button class="button button-balanced" ng-click="register()">Register</button>
+        <div class="button-bar">
+            <button class="button button-positive" ng-click="login()">Login</button>
+            <button class="button button-dark" ng-click="register()">Register</button>
+        </div>
     </div>
 </section>
