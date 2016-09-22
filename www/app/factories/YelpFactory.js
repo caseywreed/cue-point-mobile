@@ -8,21 +8,13 @@ app.factory("YelpFactory", function ($q, $http, $cordovaGeolocation) {
     let long = null
     let userLocation = null
 
+    let getUserLocation = () => {
+        return userLocation
+    }
 
-    // let getCoordsFromPhone = () => {
-    //     var posOptions = {timeout: 10000, enableHighAccuracy: false};
-    //     $cordovaGeolocation
-    //     .getCurrentPosition(posOptions)
-    //     .then(function (position) {
-    //         console.log("phone position", position)
-    //         lat  = position.coords.latitude
-    //         long = position.coords.longitude
-    //         return searchYelpWithCoords(lat, long)
-    //         .then(function (data) {
-    //             console.log("data from yelp", data)
-    //         })
-    //     })
-    // }
+    let setUserLocation = (arrayWithObj) => {
+        userLocation = arrayWithObj
+    }
 
     let getCoordsFromPhone = () => {
         return $q((resolve, reject) => {
@@ -64,7 +56,7 @@ app.factory("YelpFactory", function ($q, $http, $cordovaGeolocation) {
         })
     }
 
-    return {searchYelpWithCoords, getCoordsFromPhone}
+    return {searchYelpWithCoords, getCoordsFromPhone, getUserLocation, setUserLocation}
 
 })
 
