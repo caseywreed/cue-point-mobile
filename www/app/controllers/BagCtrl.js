@@ -13,6 +13,11 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         $scope.transferedUserTokens = AuthFactory.getTransferableUserTokens()
         if ($scope.storeDisplay == null) {
             YelpFactory.getCoordsFromPhone()
+            .then(function (data) {
+                console.log("data in bag display", data)
+                $scope.storeDisplay = data.data.businesses[0]
+                console.log("$scope.storeDisplay", $scope.storeDisplay)
+            })
         } else {
             console.log("Already found your store!")
         }
