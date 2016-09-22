@@ -5,7 +5,9 @@
         <div ng-repeat="trip in displayTrips">
             <div class="card">
                 <div class="list padding">
-                    <h4>{{trip.date}}</h4>
+                    <h3>{{trip.date}}</h3>
+                    <h3>{{trip.store[0].name}}</h3>
+                    <h3>{{trip.store[0].location.city}}, {{trip.store[0].location.state}}</h3>
                     <h4>Items Purchased: {{trip.purchasedItems.length}}</h4>
                     <div ng-repeat="itemImages in trip.purchasedItems">
                         <img src="{{itemImages.thumb}}">
