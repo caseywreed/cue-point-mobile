@@ -1,15 +1,28 @@
 "use strict";
 
-app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast) {
+app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast, YelpFactory) {
 
     $scope.bag = []
     $scope.bagDisplay = []
+    $scope.storeDisplay = null
     $scope.transferedUserTokens = {}
 
     $scope.bagCtrlInit = () => {
         $scope.getBagFromDiscogsFactory()
         $scope.loadBagToBagDisplay()
         $scope.transferedUserTokens = AuthFactory.getTransferableUserTokens()
+        $scope.storeDisplay = YelpFactory.getUserLocation()
+        if ($scope.storeDisplay == null) {
+            YelpFactory.getCoordsFromPhone()
+            .then(function (data) {
+                console.log("data in bag display", data)
+                $scope.storeDisplay = [data.data.businesses[0]]
+                YelpFactory.setUserLocation($scope.storeDisplay)
+                console.log("$scope.storeDisplay", $scope.storeDisplay)
+            })
+        } else {
+            console.log("Already found your store!")
+        }
     }
 
     $scope.getBagFromDiscogsFactory = () => {
