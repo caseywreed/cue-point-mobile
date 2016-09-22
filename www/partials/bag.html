@@ -11,6 +11,8 @@
     <div class="list padding">
         <div ng-repeat="store in storeDisplay">
             <h5>{{store.name}}</h5>
+            <div><img src="{{store.image_url}}"/></span></div>
+            <div><p>{{store.location.city}}, {{store.location.state}} {{store.location.zip_code}}</p></div>
         </div>
         <div ng-repeat="release in bagDisplay">
             <div class="card">
