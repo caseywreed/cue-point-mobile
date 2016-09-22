@@ -82,7 +82,8 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
             "tripId": tripId,
             "timestamp": timestamp,
             "date": calDate.toString(),
-            "purchasedItems": $scope.bagDisplay
+            "purchasedItems": $scope.bagDisplay,
+            "store": $scope.storeDisplay
         }
         console.log("trip object", tripObj)
         return DiscogsFactory.addTripToFirebase(tripObj)

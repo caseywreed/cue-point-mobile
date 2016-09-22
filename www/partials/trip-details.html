@@ -4,6 +4,8 @@
         <a style="text-decoration: none;" ng-href="#/trips"><button class="button button-positive button-full">Back to Trips</button></a>
         <div ng-repeat="trip in tripDisplay">
             <h3>{{trip.date}}</h3>
+            <h3>{{trip.store[0].name}}</h3>
+            <h3>{{trip.store[0].location.city}}, {{trip.store[0].location.state}}</h3>
                 <div ng-repeat="release in trip.purchasedItems">
                     <div class="card">
                         <h3>{{release.artists[0].name}}</h3>
