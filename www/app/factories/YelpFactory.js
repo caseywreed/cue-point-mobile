@@ -10,20 +10,36 @@ app.factory("YelpFactory", function ($q, $http, $cordovaGeolocation) {
 
 
     // THIS NEEDS TO BE WRAPPED IN A PROMISE.... MAYBE
+    // let getCoordsFromPhone = () => {
+    //     var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    //     $cordovaGeolocation
+    //     .getCurrentPosition(posOptions)
+    //     .then(function (position) {
+    //         console.log("phone position", position)
+    //         lat  = position.coords.latitude
+    //         long = position.coords.longitude
+    //         searchYelpWithCoords(lat, long)
+    //         .then(function (data) {
+    //             console.log("data from yelp", data)
+    //             resolve(data)
+    //         })
+    //     })
+    // }
+
     let getCoordsFromPhone = () => {
-        var posOptions = {timeout: 10000, enableHighAccuracy: false};
-        $cordovaGeolocation
-        .getCurrentPosition(posOptions)
-        .then(function (position) {
-            console.log("phone position", position)
-            lat  = position.coords.latitude
-            long = position.coords.longitude
-            searchYelpWithCoords(lat, long)
-            .then(function (data) {
-                console.log("data from yelp", data)
+    return $q((resolve,reject) => {
+        let posOptions = {timeout: 10000, enableHighAccuracy: false};
+        $cordovaGeolocation.getCurrentPosition(posOptions)
+            .success((data) => {
+                console.log("phone position", data)
+                lat  = position.coords.latitude
+                long = position.coords.longitude
+                resolve(data)
             })
-        }, function(err) {
-            console.log(err)
+            .error( (error) => {
+                console.error(error)
+                reject(error)
+            })
         })
     }
 

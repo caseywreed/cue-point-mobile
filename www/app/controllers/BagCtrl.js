@@ -4,13 +4,24 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
 
     $scope.bag = []
     $scope.bagDisplay = []
+    $scope.storeDisplay = []
     $scope.transferedUserTokens = {}
 
     $scope.bagCtrlInit = () => {
         $scope.getBagFromDiscogsFactory()
         $scope.loadBagToBagDisplay()
         $scope.transferedUserTokens = AuthFactory.getTransferableUserTokens()
-        YelpFactory.getCoordsFromPhone()
+        if ($scope.storeDisplay === []) {
+            YelpFactory.getCoordsFromPhone()
+            .then(function () {
+                YelpFactory.searchYelpWithCoords()
+                .then(function (data) {
+                    console.log("data withing BagCtrl", data)
+                })
+            })
+        } else {
+            console.log("Already found your store!")
+        }
     }
 
     $scope.getBagFromDiscogsFactory = () => {
