@@ -20,7 +20,10 @@
                 <div><p>{{release.barcode[0]}}</p></div>
                 <div><p>{{release.barcode[1]}}</p></div>
                 <h4>{{release.year}}</h6>
-                <div><button class="button button-positive button-full" ng-click="addReleaseToBag(release.resource_url, release.thumb)">Add Release To Bag</button></div>
+                <div class="button-bar">
+                    <button class="button button-positive" ng-click="addReleaseToBag(release.resource_url, release.thumb)">Add To Bag</button>
+                    <button class="button button-dark" ng-click="viewReleaseDetails(release.uri)">More Details</button>
+                </div>
             </div>
         </div>
     </div>
