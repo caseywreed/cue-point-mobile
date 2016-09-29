@@ -58,6 +58,18 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         })
     }
 
+    $scope.clearBag = () => {
+        console.log("clearing bag")
+        $scope.bag = []
+        $scope.displayBag = []
+        DiscogsFactory.setBag($scope.bag)
+        $cordovaToast.showShortCenter('Bag cleared').then(function(success) {
+            $location.url("/main")
+            }, function (error) {
+            // error
+            });
+    }
+
     $scope.deleteReleaseFromBag = (release) => {
         let spliceIndex = $scope.bagDisplay.indexOf(release)
         $scope.bagDisplay.splice(spliceIndex, 1)
