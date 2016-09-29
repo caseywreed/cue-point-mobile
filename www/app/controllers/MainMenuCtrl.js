@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $cordovaBarcodeScanner, $cordovaToast, $ionicTabsDelegate) {
+app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $cordovaBarcodeScanner, $cordovaToast, $ionicTabsDelegate, $cordovaInAppBrowser) {
 
     $scope.userAuthToken = {}
     $scope.searchTerm = ""
@@ -85,6 +85,20 @@ app.controller("MainMenuCtrl", function ($scope, AuthFactory, DiscogsFactory, $c
         }, function (error) {
         // error
         });
+    }
+
+    $scope.viewReleaseDetails = (uri) => {
+        let options = {
+            location: "no",
+            zoom: "no"
+        }
+        $cordovaInAppBrowser.open(`http://www.discogs.com${uri}`, '_blank', options)
+          .then(function(event) {
+            // success
+          })
+          .catch(function(event) {
+            // error
+          });
     }
 
     $scope.scanBarcode = () => {
