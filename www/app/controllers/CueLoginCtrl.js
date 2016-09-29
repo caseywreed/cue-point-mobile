@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("CueLoginCtrl", function ($scope, $window, $location, AuthFactory, $ionicTabsDelegate) {
+app.controller("CueLoginCtrl", function ($scope, $window, $location, AuthFactory, $ionicTabsDelegate, $cordovaToast) {
 
     $scope.account = {
         email: "",
@@ -44,6 +44,11 @@ app.controller("CueLoginCtrl", function ($scope, $window, $location, AuthFactory
             } else {
             console.log("inside login's ELSE block")
             $window.location.href = "#/login"
+            $cordovaToast.showShortCenter('Incorrect username or password').then(function(success) {
+            // success
+            }, function (error) {
+            // error
+            });
             }
         })
     }
