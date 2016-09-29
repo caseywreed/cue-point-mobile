@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast, YelpFactory) {
+app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthFactory, $cordovaToast, YelpFactory, $ionicTabsDelegate) {
 
     $scope.bag = []
     $scope.bagDisplay = []
@@ -56,6 +56,19 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
             // error
             });
         })
+    }
+
+    $scope.clearBag = () => {
+        console.log("clearing bag")
+        $scope.bag = []
+        $scope.displayBag = []
+        DiscogsFactory.setBag($scope.bag)
+        $cordovaToast.showShortCenter('Bag cleared').then(function(success) {
+            $ionicTabsDelegate.select(0)
+            $location.url("/main")
+            }, function (error) {
+            // error
+            });
     }
 
     $scope.deleteReleaseFromBag = (release) => {
