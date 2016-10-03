@@ -49,6 +49,7 @@ app.controller("BagCtrl", function ($scope, $location, $q, DiscogsFactory, AuthF
         .then(function () {
             $scope.bag = []
             DiscogsFactory.setBag($scope.bag)
+            $ionicTabsDelegate.select(0)
             $location.url("/main")
             $cordovaToast.showShortCenter('Bag pushed to Discogs').then(function(success) {
             // success
